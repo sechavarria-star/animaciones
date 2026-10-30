@@ -5,16 +5,21 @@
   "scripts": {
     "start": "remotion studio",
     "build": "remotion render Instructivo out/instructivo.mp4",
-    "voz": "node scripts/generar-voz.mjs"
+    "voz": "node scripts/generar-voz.mjs",
+    "demo": "remotion render DemoRemy out/demo-remy.mp4 --gl=swangle --browser-executable=./scripts/chromium-webgl.sh --timeout=120000"
   },
   "dependencies": {
+    "@react-three/fiber": "8.17.10",
+    "@remotion/three": "4.0.539",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "remotion": "4.0.539"
+    "remotion": "4.0.539",
+    "three": "0.169.0"
   },
   "devDependencies": {
     "@remotion/cli": "4.0.539",
     "@types/react": "18.3.12",
+    "@types/three": "0.169.0",
     "typescript": "5.6.3"
   }
 }
