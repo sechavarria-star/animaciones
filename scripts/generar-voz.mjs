@@ -1,9 +1,10 @@
-// Genera la narración de cada escena con espeak-ng (offline, gratis) y calcula
+// Genera la narración de cada escena con Piper (offline, gratis) y calcula
 // los tiempos de palabra para los subtítulos. Los tiempos son estimados por largo de palabra.
 import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 
 const PAUSA = 0.6;
+const MODELO = "models/es_ES-davefx-medium.onnx";
 const guion = JSON.parse(readFileSync("src/guion.json", "utf8"));
 
 const duracion = (archivo) =>
@@ -16,7 +17,7 @@ let t = 0;
 guion.escenas.forEach((escena, i) => {
   const crudo = `public/escena-${i + 1}.wav`;
   const pad = `public/escena-${i + 1}-pad.wav`;
-  execFileSync("espeak-ng", ["-v", "es", "-s", "150", "-w", crudo, escena.texto]);
+  execFileSync("python3", ["-m", "piper", "--model", MODELO, "--output_file", crudo], { input: escena.texto });
   execFileSync("ffmpeg", ["-v", "error", "-y", "-i", crudo, "-af", `apad=pad_dur=${PAUSA}`, pad]);
 
   const habla = duracion(crudo);

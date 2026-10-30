@@ -11,4 +11,4 @@ npm start                                 # vista previa en Remotion Studio
 npm run build                             # renderiza out/instructivo.mp4
 ```
 
-Motor de voz: espeak-ng (offline). Los subtítulos usan tiempos estimados por palabra.
+Motor de voz: Piper con el modelo es_ES-davefx-medium (offline). El modelo va en `models/`, que no se versiona. Los subtítulos usan tiempos estimados por palabra.
