@@ -4,7 +4,7 @@ import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 
 const PAUSA = 0.6;
-const MODELO = "models/es_ES-davefx-medium.onnx";
+const MODELO = "models/es_AR-daniela-high.onnx";
 const guion = JSON.parse(readFileSync("src/guion.json", "utf8"));
 
 const duracion = (archivo) =>
